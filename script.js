@@ -19,6 +19,7 @@
 document.getElementById('regForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
   const telegram = document.getElementById('telegram').value.trim();
   const question = document.getElementById('question').value.trim();
 
@@ -27,19 +28,15 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
     await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, telegram, question })
+      body: JSON.stringify({ name, email, telegram, question })
     });
   } catch (err) {
-    // Не блокируем уход если сеть пропала
     console.warn('Registration save failed:', err);
   }
 
   document.getElementById('regForm').style.display = 'none';
   document.getElementById('successMsg').style.display = 'block';
   document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  setTimeout(function() {
-    window.open('https://start.bizon365.ru/room/207609/webinar_practice2026', '_blank');
-  }, 1500);
 });
 
 // Smooth scroll for anchor links

@@ -358,6 +358,11 @@ details { cursor: pointer; }
   font-weight: 500;
   color: var(--color-text);
 }
+.label-required {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
 .label-hint {
   font-weight: 400;
   color: var(--color-text-faint);
