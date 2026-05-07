@@ -23,10 +23,11 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
   const telegram = document.getElementById('telegram').value.trim();
   const question = document.getElementById('question').value.trim();
 
-  // Сохраняем в Google Sheets через бэкенд
+  // Сохраняем в Google Sheets + отправляем письмо через Apps Script
   try {
-    await fetch('/api/register', {
+    await fetch('https://script.google.com/macros/s/AKfycbwz4LvSwoN-SXE-Jndmdmhmw_GYuyiDWJly-tjcl5fyG0Wh3J31xk6uiUIsvoXX5m_7Bg/exec', {
       method: 'POST',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, telegram, question })
     });
